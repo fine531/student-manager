@@ -1,0 +1,70 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Success - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-body py-5">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                </div>
+                
+                <h3 class="card-title text-success mb-3">
+                    Student Added Successfully!
+                </h3>
+                
+                <p class="card-text text-muted mb-4">
+                    The student has been successfully added to the database. 
+                    You can now view all students or add another one.
+                </p>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="{% url 'students:index' %}" class="btn btn-primary me-md-2">
+                        <i class="fas fa-list me-1"></i>View All Students
+                    </a>
+                    <a href="{% url 'students:add_student' %}" class="btn btn-success">
+                        <i class="fas fa-plus me-1"></i>Add Another Student
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Stats Card -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <i class="fas fa-chart-bar me-1"></i>What's Next?
+                </h6>
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="border-end">
+                            <h5 class="text-primary mb-1">
+                                <i class="fas fa-users"></i>
+                            </h5>
+                            <small class="text-muted">View Students</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="border-end">
+                            <h5 class="text-success mb-1">
+                                <i class="fas fa-plus"></i>
+                            </h5>
+                            <small class="text-muted">Add More</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div>
+                            <h5 class="text-info mb-1">
+                                <i class="fas fa-cog"></i>
+                            </h5>
+                            <small class="text-muted">Manage</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

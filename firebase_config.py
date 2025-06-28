@@ -4,6 +4,9 @@ This file initializes the Firebase connection using the service account key.
 """
 
 import os
+import json
+# import firebase_admin
+from firebase_admin import credentials, firestore
 
 # Try to import Firebase dependencies
 try:
@@ -27,18 +30,14 @@ def initialize_firebase():
     try:
         # Check if Firebase app is already initialized
         if not firebase_admin._apps:
-            # Path to the service account key file
-            service_account_path = "student-manager-key.json"
-            
-            # Check if the service account key file exists
-            if not os.path.exists(service_account_path):
-                print(f"Warning: {service_account_path} not found. Please place your Firebase service account key file in the project root.")
-                print("Running in development mode with mock data.")
-                return None
-            
-            # Initialize Firebase with service account credentials
-            cred = credentials.Certificate(service_account_path)
-            firebase_admin.initialize_app(cred)
+            cred_json = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS_JSON')
+            if cred_json:
+                cred = credentials.Certificate(json.loads(cred_json))
+                firebase_admin.initialize_app(cred)
+            else:
+                # fallback for local dev
+                cred = credentials.Certificate('student-manager-key.json')
+                firebase_admin.initialize_app(cred)
             print("Firebase initialized successfully!")
         
         # Get Firestore client

@@ -116,9 +116,9 @@ Welcome! This is a simple web app to help you keep track of students. You can ad
 
 ---
 
-## 🏆 You Did It!
-You now have a real web app that uses a cloud database, with search, popups, and logs. Show it to your friends or teacher!
+   ## Live Demo
 
+   [Student Management System on Render](https://student-manager-1-subo.onrender.com/students/)
 ---
 
 **Happy Learning! 🚀** 
